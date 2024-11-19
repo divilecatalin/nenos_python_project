@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "nenos-python-project"
 version = "0.1.0"
-description = ""
+description = "Store App"
 authors = ["divilecatalin <divilec@gmail.com>"]
 readme = "README.md"
 packages = [{include = "src"}]
@@ -11,6 +11,14 @@ python = "^3.11"
 pydantic = "^2.9.2"
 pytest = "^8.3.3"
 pylint = "^3.3.1"
+sqlalchemy = "^2.0.36"
+pymysql = "^1.1.1"
+fastapi = "^0.115.5"
+uvicorn = "^0.32.0"
+dash = "^2.18.2"
+requests = "^2.32.3"
+dash-mantine-components = "^0.14.7"
+dash-iconify = "^0.1.2"
 
 
 [build-system]
