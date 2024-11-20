@@ -14,7 +14,7 @@ class Transaction(SQL_Base):
     seller_proof = Column(String(50), nullable=True)
     buyer = relationship("User",foreign_keys=[buyer_id])
     seller = relationship("User", foreign_keys=[seller_id])
-    product = relationship("Product", back_populates="transactions")
+    product = relationship("Product", foreign_keys=[product_id])
 
     def as_dict(self):
         return {col.name:getattr(self, col.name) for col in self.__tablename__.columns}

@@ -17,8 +17,8 @@ fastapi = "^0.115.5"
 uvicorn = "^0.32.0"
 dash = "^2.18.2"
 requests = "^2.32.3"
-dash-mantine-components = "^0.14.7"
 dash-iconify = "^0.1.2"
+dash-mantine-components = "0.12.1"
 
 
 [build-system]

@@ -9,7 +9,8 @@ def add_user_in_db(username : str,email : str,role : str) -> None:
         user = User(
             username = username,
             email = email,
-            role = role,
+            role = role
+            
         )
         session.add(user)
         session.commit()

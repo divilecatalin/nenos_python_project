@@ -12,9 +12,6 @@ class Product(SQL_Base):
     seller_id = Column(Integer, ForeignKey("users.id"), nullable=False)
     tags = Column(String(20))
 
-    #relations
-    seller = relationship("User", back_populates="products")
-    transactions = relationship("Transaction", back_populates="products")
 
     def as_dict(self):
         return {col.name:getattr(self, col.name) for col in self.__tablename__.columns}

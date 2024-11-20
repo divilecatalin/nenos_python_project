@@ -13,5 +13,5 @@ def add_user(dto: UserDto ) -> Response:
     add_user_in_db(
         username = dto.username,
         email = dto.email,
-        role = dto.role,
+        role = dto.role
     )

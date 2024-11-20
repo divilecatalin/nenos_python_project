@@ -13,9 +13,6 @@ class User(SQL_Base):
     reports = Column(Integer, default=0)
     banned = Column(Boolean, default=False)
 
-    #relationships
-    products = relationship("Product", back_populates="seller")
-    transactions = relationship("Transaction", back_populates="buyer")
 
     def as_dict(self):
         return {col.name: getattr(self, col.name) for col in self.__tablename__.columns}
