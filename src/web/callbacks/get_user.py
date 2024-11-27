@@ -13,7 +13,7 @@ def register_get_user_callbacks(app: Dash) -> None:
     Register get user callbacks
     """
     @app.callback(
-        Output('fetch-user-details', "children"),  
+        Output('fetch-user-detail', "children"),  
         [
             Input("get-user-button", "n_clicks"),
             Input("get-user-id", "value"),
@@ -30,6 +30,6 @@ def register_get_user_callbacks(app: Dash) -> None:
                 user_dto = UserDto(**user_data)
                 return UserCardComponent(user_dto).render()
             else:
-                return ErrorCardComponent(response.status_code).render()
+                return ErrorCardComponent(response.status_code,"Error: User not found (status code:").render()
 
         raise PreventUpdate

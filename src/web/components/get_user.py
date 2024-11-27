@@ -1,4 +1,5 @@
 import dash_mantine_components as dmc
+from dash import html
 from src.web.components.base import DashAppBaseComponent
 
 class GetUserComponent(DashAppBaseComponent):
@@ -19,5 +20,8 @@ class GetUserComponent(DashAppBaseComponent):
                     children="Get User",
                     w=200,
                 ),
+                html.Div(
+                id='fetch-user-detail',
+                  ), 
             ],
         )

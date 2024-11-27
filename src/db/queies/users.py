@@ -32,22 +32,32 @@ def get_user_from_db(user_id: int) -> UserDto:
             )
         return None
 
-def update_user_in_db(user_id: int, dto: UserDto) -> bool:
+def update_user_in_db(user_id: int, dto: UserDto) -> UserDto:
     """
     Update a user in the database 
     """ 
     with SQLSession() as session:
+        print(user_id)
         user = session.query(User).filter(User.id == user_id).first()
+        print(user)
         if not user:
-            return False
-        user.username = dto.username
-        user.email = dto.email
-        user.role = dto.role
-        user.endorsements = dto.endorsements
-        user.reports = dto.reports
-        user.banned = dto.banned
+            return None
+        user.username = dto.username or user.username
+        user.email = dto.email or user.email
+        user.role = dto.role or user.role
+        user.endorsements = (user.endorsements or 0) + (dto.endorsements or 0)
+        user.reports = (user.reports or 0) + (dto.reports or 0)
+        user.banned = user.reports >=10
         session.commit()
-        return True
+        session.refresh(user)
+        return UserDto(
+                username=user.username,
+                email=user.email,
+                role=user.role,
+                endorsements=user.endorsements,
+                reports=user.reports,
+                banned=user.banned
+            )
 
 def delete_user_from_db(user_id: int) -> bool:
     """

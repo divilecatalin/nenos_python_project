@@ -30,7 +30,7 @@ def get_user(user_id: int) -> UserDto:
         raise HTTPException(status_code=404, detail="User  not found")
     return user
 
-@router.patch("/{user_id}")
+@router.patch("/{user_id}",response_model=UserDto)
 def update_user(user_id: int, dto: UserDto) -> Response:
     """ 
     Update an existing user in the database 
@@ -38,7 +38,7 @@ def update_user(user_id: int, dto: UserDto) -> Response:
     updated = update_user_in_db(user_id, dto)
     if not updated:
         raise HTTPException(status_code=404, detail="User  not found")
-    return Response(status_code=200)
+    return updated
 
 @router.delete("/{user_id}")
 def delete_user(user_id: int) -> Response:
