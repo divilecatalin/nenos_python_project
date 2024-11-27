@@ -1,46 +1,60 @@
 import dash
 import dash_mantine_components as dmc
-from dash import html, dcc
-
+from dash import html, dcc, Input, Output
 from src.web.callbacks import register_all_callbacks
 from src.web.components.header import Header
-from src.web.components.loading import Loading
 from src.web.components.add_user import AddUserComponent
+from src.web.components.get_user import GetUserComponent
 
 # Create the Dash app
-app = dash.Dash(__name__)
+app = dash.Dash(__name__, suppress_callback_exceptions=True)
 app.title = "API Status Checker"
 
 # App layout
 app.layout = dmc.MantineProvider(
     children=dmc.Stack(
         children=[
-            # Header
             html.Div(
                 id='webapp-header',
-                children=Header("Online shop").render()
-            ),
+                children=Header("Online shop").render()),
             dmc.Divider(variant="solid"),
-            # Main content
+            dmc.ButtonGroup(
+                children=[
+                dmc.Button("Get User", id='get-user-nav', n_clicks=0),
+                dmc.Button("Add User", id='add-user-nav', n_clicks=0),
+            ], style={"marginBottom": "20px"}),
             html.Div(
                 id='webapp-content',
-                children=[
-                   # Loading().render()
-                    AddUserComponent().render()
-                ]
-            ),
-            # Page refresh
+                  children=[
+                      GetUserComponent().render()
+                      ]), 
             dcc.Interval(
                 id="webapp-refresh-timer",
-                interval=1 * 60 * 1000,  # 5 minutes in milliseconds
-                n_intervals=0,  # Number of times the interval has fired
-            ),
+                  interval=1 * 60 * 1000, n_intervals=0
+                  ),
         ]
     )
 )
 
-# Register all component callbacks
+
 register_all_callbacks(app)
+
+
+@app.callback(
+    Output('webapp-content', 'children'),
+    [Input('get-user-nav', 'n_clicks'),
+     Input('add-user-nav', 'n_clicks')]
+)
+def update_content(get_user_clicks, add_user_clicks):
+    ctx = dash.callback_context
+    if not ctx.triggered:
+        return GetUserComponent().render()
+
+    button_id = ctx.triggered[0]['prop_id'].split('.')[0]
+    if button_id == 'get-user-nav':
+        return GetUserComponent().render()
+    elif button_id == 'add-user-nav':
+        return AddUserComponent().render()
 
 # Run the app
 if __name__ == "__main__":

@@ -15,7 +15,7 @@ def register_add_user_callbacks(app: Dash) -> None:
     Register add user callbacks
     """
     @app.callback(
-        Output('webapp-content', "children"),
+        Output('insert-user-details', "children"),
         [
             Input("add-user-button", "n_clicks"),
             Input("add-user-username", "value"),
@@ -24,8 +24,11 @@ def register_add_user_callbacks(app: Dash) -> None:
         ]
     )
     def send_user_info_to_api(_: int, username: str, email: str, role: str):
+        print(username)
         trigger = callback_context.triggered[0]
         if trigger["prop_id"].split('.')[0] == "add-user-button":
+            if not username or not email or not role:
+                raise PreventUpdate
             dto = UserDto(
                 username=username,
                 email=email,

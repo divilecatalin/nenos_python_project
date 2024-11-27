@@ -16,7 +16,7 @@ def register_api_status_callbacks(app: Dash) -> None:
     Register api status callbacks
     """
     @app.callback(
-        Output('webapp-content', "children"),
+        Output('webapp-content1', "children"),
         [Input("webapp-refresh-timer", "n_intervals")]
     )
     def check_api_status(_):
