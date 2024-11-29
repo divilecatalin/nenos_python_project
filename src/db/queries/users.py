@@ -37,9 +37,7 @@ def update_user_in_db(user_id: int, dto: UserDto) -> UserDto:
     Update a user in the database 
     """ 
     with SQLSession() as session:
-        print(user_id)
         user = session.query(User).filter(User.id == user_id).first()
-        print(user)
         if not user:
             return None
         user.username = dto.username or user.username

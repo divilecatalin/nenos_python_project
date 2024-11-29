@@ -30,7 +30,7 @@ class AddUserComponent(DashAppBaseComponent):
                     w=200,
                 ),
                 html.Div(
-                id='add_user_details',
+                    id='add_user_details',
                   ),
             ],
         )

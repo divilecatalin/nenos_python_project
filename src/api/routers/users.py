@@ -1,10 +1,10 @@
 from fastapi import APIRouter, Response , HTTPException
 
 from src.common.data_transfer_objects.users import UserDto
-from src.db.queies.users import add_user_in_db
-from src.db.queies.users import get_user_from_db
-from src.db.queies.users import update_user_in_db
-from src.db.queies.users import delete_user_from_db
+from src.db.queries.users import add_user_in_db
+from src.db.queries.users import get_user_from_db
+from src.db.queries.users import update_user_in_db
+from src.db.queries.users import delete_user_from_db
 
 router = APIRouter()
 

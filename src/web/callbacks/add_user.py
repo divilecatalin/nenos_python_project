@@ -7,6 +7,7 @@ from dash.dependencies import Input, Output
 
 from src.config import API_URL
 from src.common.data_transfer_objects.users import UserDto
+from src.web.components.error_card import MessageCardComponent
 
 
 
@@ -37,6 +38,11 @@ def register_add_user_callbacks(app: Dash) -> None:
                 banned=False,
             )
             response = requests.put(f"{API_URL}/users", timeout=5, data=dto.json())
-            return response.status_code
+            if response.status_code == 201:
+                return MessageCardComponent(response.status_code,f"Success: User inserted (status code:").render()
+            elif response.status_code == 404:
+                return MessageCardComponent(response.status_code,"Error: User not found (status code:").render()
+            else:
+                return MessageCardComponent(response.status_code,"Error:  (status code:").render()
 
         raise PreventUpdate

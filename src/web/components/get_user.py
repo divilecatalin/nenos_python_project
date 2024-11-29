@@ -21,7 +21,8 @@ class GetUserComponent(DashAppBaseComponent):
                     w=200,
                 ),
                 html.Div(
-                id='fetch-user-detail',
+                    id='fetch-user-detail',
+                    style={"marginTop":"20px"},
                   ), 
             ],
         )

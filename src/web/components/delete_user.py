@@ -1,7 +1,8 @@
 import dash_mantine_components as dmc
+from dash import html
 from src.web.components.base import DashAppBaseComponent
 
-class UserInputComponent:
+class DeleteUserComponent(DashAppBaseComponent):
     def __init__(self):
         pass
 
@@ -9,14 +10,18 @@ class UserInputComponent:
         return dmc.Stack(
             children=[
                 dmc.TextInput(
-                    id="get-user-id",
+                    id="delete-user-id",
                     label="User id:",
                     w=200
                 ),
                 dmc.Button(
-                    id="get-user-button",
-                    children="Get User",
+                    id="delete-user-button",
+                    children="Delete User",
                     w=200,
                 ),
+                html.Div(
+                    id='delete-user-response',
+                    style={"marginTop":"20px"},
+                  ), 
             ],
         )

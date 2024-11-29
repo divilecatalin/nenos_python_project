@@ -6,7 +6,6 @@ from src.web.components.header import Header
 from src.web.components.add_user import AddUserComponent
 from src.web.components.get_user import GetUserComponent
 from src.web.components.update_user import UpdateUserComponent
-from src.web.components.delete_user import DeleteUserComponent
 
 
 # Create the Dash app
@@ -23,25 +22,21 @@ app.layout = dmc.MantineProvider(
             dmc.Divider(variant="solid"),
             dmc.Tabs(
                 [
-                    dmc.TabsList([
+                    dmc.TabsList(
+                        [
                             dmc.Tab("Get User", value="get-user"),
                             dmc.Tab("Add User", value="add-user"),
                             dmc.Tab("Update User", value="update-user"),
                             dmc.Tab("Delete User", value="delete-user"),
-                        ],
-                        grow=True,
-                        style={"display": "flex", "justifyContent": "center"},
-                        
+                        ]
                     ),
                     dmc.TabsPanel(GetUserComponent().render(), value="get-user"),
                     dmc.TabsPanel(AddUserComponent().render(), value="add-user"),
                     dmc.TabsPanel(UpdateUserComponent().render(), value="update-user"),
-                    dmc.TabsPanel(DeleteUserComponent().render(), value="delete-user"),
+                    dmc.TabsPanel(html.Div("Delete User Content Here"), value="delete-user"),
                 ],
-                value="get-user",  
+                value="get-user",  # Tab-ul implicit selectat
                 id="webapp-tabs",
-                color="blue",
-                variant="outline",
                 style={"marginBottom": "20px"}
             ),
             dcc.Interval(

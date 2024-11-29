@@ -1,6 +1,7 @@
 import dash_mantine_components as dmc
+from src.web.components.base import DashAppBaseComponent
 
-class ErrorCardComponent:
+class MessageCardComponent(DashAppBaseComponent):
     def __init__(self, status_code, message):
         self.status_code = status_code
         self.message = message
@@ -11,7 +12,7 @@ class ErrorCardComponent:
             shadow="sm",
             p="lg",
             radius="md",
-            bg="red",
+            bg="yellow",
             withBorder=True,
             style={"display": "block", "marginTop": "20px"},
         )

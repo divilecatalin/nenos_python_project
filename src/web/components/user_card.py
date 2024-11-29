@@ -1,7 +1,8 @@
 import dash_mantine_components as dmc
 from src.common.data_transfer_objects.users import UserDto
+from src.web.components.base import DashAppBaseComponent
 
-class UserCardComponent:
+class UserCardComponent(DashAppBaseComponent):
     def __init__(self, user_dto:UserDto):
         self.user_dto = user_dto
 

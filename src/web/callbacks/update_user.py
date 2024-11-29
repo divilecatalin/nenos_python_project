@@ -9,13 +9,13 @@ from src.config import API_URL
 from src.common.data_transfer_objects.users import UserDto
 
 from src.web.components.updated_user_card import UpdatedUserCardComponent
-from src.web.components.error_card import ErrorCardComponent
+from src.web.components.error_card import MessageCardComponent
 
 
 
 def register_update_user_callbacks(app: Dash) -> None:
     """
-    Register add user callbacks
+    Register update user callbacks
     """
     @app.callback(
         Output('update_user_details', "children"),
@@ -50,6 +50,6 @@ def register_update_user_callbacks(app: Dash) -> None:
                 user_dto = UserDto(**user_data)
                 return UpdatedUserCardComponent(user_dto,user_id).render()
             else:
-                return ErrorCardComponent(response.status_code,"Error: User not found (status code:").render()
+                return MessageCardComponent(response.status_code,"Error: User not found (status code:").render()
 
         raise PreventUpdate
