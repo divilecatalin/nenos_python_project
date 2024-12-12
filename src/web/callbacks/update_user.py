@@ -9,7 +9,7 @@ from src.config import API_URL
 from src.common.data_transfer_objects.users import UserDto
 
 from src.web.components.updated_user_card import UpdatedUserCardComponent
-from src.web.components.error_card import MessageCardComponent
+from src.web.components.message_card import MessageCardComponent
 
 
 

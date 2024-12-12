@@ -4,7 +4,7 @@ from dash import callback_context
 from dash.exceptions import PreventUpdate
 from dash.dependencies import Input, Output
 from src.config import API_URL
-from src.web.components.error_card import MessageCardComponent
+from src.web.components.message_card import MessageCardComponent
 
 def register_delete_user_callbacks(app: Dash) -> None:
     """

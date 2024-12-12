@@ -1,7 +1,6 @@
 import os
 import sqlalchemy
 from sqlalchemy.orm import Session, sessionmaker
-from typing import Generator
 
 from src.config import DB_NAME
 

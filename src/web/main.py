@@ -24,10 +24,10 @@ app.layout = dmc.MantineProvider(
             dmc.Tabs(
                 [
                     dmc.TabsList([
-                            dmc.Tab("Get User", value="get-user"),
-                            dmc.Tab("Add User", value="add-user"),
-                            dmc.Tab("Update User", value="update-user"),
-                            dmc.Tab("Delete User", value="delete-user"),
+                            dmc.Tab("Get User", value="get-user", className="tab-inactive"),
+                            dmc.Tab("Add User", value="add-user", className="tab-inactive"),
+                            dmc.Tab("Update User", value="update-user", className="tab-inactive"),
+                            dmc.Tab("Delete User", value="delete-user", className="tab-inactive"),
                         ],
                         grow=True,
                         style={"display": "flex", "justifyContent": "center"},
@@ -41,7 +41,7 @@ app.layout = dmc.MantineProvider(
                 value="get-user",  
                 id="webapp-tabs",
                 color="blue",
-                variant="outline",
+                variant="pills",
                 style={"marginBottom": "20px"}
             ),
             dcc.Interval(

@@ -18,3 +18,4 @@ class Transaction(SQL_Base):
 
     def as_dict(self):
         return {col.name:getattr(self, col.name) for col in self.__tablename__.columns}
+    

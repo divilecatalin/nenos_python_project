@@ -1,0 +1,10 @@
+.tab-inactive {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.3s ease;
+    background-color: rgba(173, 216, 230, 0.5);
+}
+
+.tab-inactive:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    background-color: rgba(173, 216, 230, 0.7);
+}

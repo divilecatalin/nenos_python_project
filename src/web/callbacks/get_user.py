@@ -6,7 +6,7 @@ from dash.dependencies import Input, Output
 from src.config import API_URL
 from src.common.data_transfer_objects.users import UserDto
 from src.web.components.user_card import UserCardComponent
-from src.web.components.error_card import MessageCardComponent
+from src.web.components.message_card import MessageCardComponent
 
 def register_get_user_callbacks(app: Dash) -> None:
     """
@@ -33,3 +33,6 @@ def register_get_user_callbacks(app: Dash) -> None:
                 return MessageCardComponent(response.status_code,"Error: User not found (status code:").render()
 
         raise PreventUpdate
+    
+
+    
